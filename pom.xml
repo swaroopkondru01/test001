@@ -22,6 +22,26 @@
           <warSourceDirectory>WebContent</warSourceDirectory>
         </configuration>
       </plugin>
+	    <!-- Nexus maven plugin & configuration plugin -->
+	    <plugin>
+   <groupId>org.sonatype.plugins</groupId>
+   <artifactId>nexus-staging-maven-plugin</artifactId>
+   <version>1.5.1</version>
+   <executions>
+      <execution>
+         <id>default-deploy</id>
+         <phase>deploy</phase>
+         <goals>
+            <goal>deploy</goal>
+         </goals>
+      </execution>
+   </executions>
+   <configuration>
+      <serverId>nexus</serverId>
+      <nexusUrl>http://34.201.24.213:8081/nexus/</nexusUrl>
+      <skipStaging>true</skipStaging>
+   </configuration>
+</plugin>
     </plugins>
   </build>
   <dependencies>
@@ -99,4 +119,12 @@
 	</dependency>
   	
   </dependencies>
+	<!-- nexus config listed below
+        -->
+	<distributionManagement>
+   <snapshotRepository>
+      <id>maven-snapshots</id>
+      <url>http://34.201.24.213:8081/repository/maven-snapshots</url>
+   </snapshotRepository>
+</distributionManagement>
 </project>
